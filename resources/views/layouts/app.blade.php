@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('head')
 </head>
 
 <body>
@@ -36,8 +37,20 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
+                    @guest
+                    @else
                     <ul class="navbar-nav me-auto">
+                        @if (Auth::user()->type == 'customer')
+                            <li>
+                                <a class="nav-link" href="/projects">Projects</a>
+                            </li>
+                        @else
+                            <li>
+                                <a class="nav-link" href="/jobs">Jobs</a>
+                            </li>
+                        @endif
                     </ul>
+                    @endguest
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -62,6 +75,13 @@
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if (auth()->user()->type == 'worker')
+                                        <li>
+                                            <a class="dropdown-item" href="/users/jobs">
+                                                My Jobs
+                                            </a>
+                                        </li>
+                                    @endif
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -84,6 +104,7 @@
             @yield('content')
         </main>
     </div>
+    @yield('scripts')
 </body>
 
 </html>

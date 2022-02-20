@@ -44,6 +44,47 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="mb-3 row">
+                                <label for="phone_number" class="col-md-4 col-form-label text-end">
+                                    Phone Number :
+                                </label>
+
+                                <div class="col-md-6">
+                                    <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror"
+                                        name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus>
+
+                                    @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="type" class="col-md-4 col-form-label text-end">
+                                    Type :
+                                </label>
+
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault1" value="worker">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                          Worker
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="type" id="flexRadioDefault2" value="customer">
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                          Customer
+                                        </label>
+                                    </div>
+                                    @error('type')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="mb-3 row">
                                 <label for="password" class="col-md-4 col-form-label text-end">

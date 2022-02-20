@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,25 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('verify')->group(function(){
+    Route::get('/user', function () {
+        return view('auth.verify');
+    });
+    Route::post('/', [App\Http\Controllers\HomeController::class, 'verify'])->name('verify.send');
+});
+Route::middleware(['auth', 'verif'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+
+Route::group(['middleware'=>['verif', 'auth']], function(){
+    //Projects route
+    Route::resource('/projects', 'App\Http\Controllers\ProjectController');
+    Route::get('/projects/{project}/campaign', [App\Http\Controllers\ProjectController::class, 'campaign']);
+
+    //Jobs route
+    Route::resource('/jobs', 'App\Http\Controllers\JobController');
+    Route::get('/jobs/{job}/apply', [App\Http\Controllers\JobController::class, 'apply']);
+
+    //User route
+    Route::get('/users/jobs', [App\Http\Controllers\UserController::class, 'job']);
+});
