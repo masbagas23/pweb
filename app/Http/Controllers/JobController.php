@@ -96,7 +96,8 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        //
+        $job = Job::with(['workers'])->where('id', $job->id)->first();
+        return view('workers.jobs.show', compact('job'));
     }
 
     /**

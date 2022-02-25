@@ -8,6 +8,7 @@
                     <div class="card-header">Projects</div>
 
                     <div class="card-body">
+                        <a href="/projects/create"><button class="btn btn-success text-white mb-3">Add new project</button></a>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -24,7 +25,7 @@
                                         <td>{{ $project->name }}</td>
                                         <td>{{ $project->description }}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-success text-white">Show</button>
+                                            <a href="/projects/{{$project->id}}"><button class="btn btn-sm btn-success text-white">Show</button></a>
                                             <button class="btn btn-sm btn-primary text-white">Edit</button>
                                             <button class="btn btn-sm btn-danger text-white">Delete</button>
                                         </td>

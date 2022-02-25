@@ -77,6 +77,11 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     @if (auth()->user()->type == 'worker')
                                         <li>
+                                            <a class="dropdown-item" href="/users/skills">
+                                                My Skills
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a class="dropdown-item" href="/users/jobs">
                                                 My Jobs
                                             </a>

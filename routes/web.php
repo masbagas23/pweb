@@ -41,4 +41,5 @@ Route::group(['middleware'=>['verif', 'auth']], function(){
 
     //User route
     Route::get('/users/jobs', [App\Http\Controllers\UserController::class, 'job']);
+    Route::get('/users/skills', [App\Http\Controllers\UserController::class, 'skill']);
 });

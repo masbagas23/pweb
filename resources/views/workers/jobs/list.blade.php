@@ -7,7 +7,6 @@
                 <div class="card">
                     <div class="card-header">My Job List</div>
                     <div class="card-body">
-                        <button class="btn btn-success text-white mb-3">Add new campaign</button>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -41,7 +40,6 @@
                                             @if ($job->workers)
                                                 <button class="btn btn-sm btn-primary text-white">Contact Customer</button>
                                             @endif
-                                            <button class="btn btn-sm btn-primary text-white">Show Detail</button>
                                         </td>
                                     </tr>
                                 @endforeach

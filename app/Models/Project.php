@@ -20,6 +20,11 @@ class Project extends Model
     {
         return $this->belongsTo(User::class, 'customer_id', 'id');
     }
+    
+    public function workers()
+    {
+        return $this->belongsTo(User::class, 'worker_id', 'id');
+    }
 
     public function jobs()
     {

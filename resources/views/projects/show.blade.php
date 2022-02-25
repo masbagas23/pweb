@@ -8,9 +8,11 @@
                     <div class="card-header">Campaign - Project {{$project->name}} </div>
 
                     <div class="card-body">
-                        <button class="btn btn-success text-white mb-3">Add new campaign</button>
+                        <a href="/projects/{{$project->id}}/campaign"><button class="btn btn-success text-white mb-3">Add new campaign</button></a>
                         @if (count($jobs) == 0)
-                            Add jobs now
+                            <div>
+                                <h2>No Campaign</h2>
+                            </div>
                         @else
                             <table class="table">
                                 <thead>
@@ -33,7 +35,7 @@
                                                 @elseif ($job->status == 'accepted')
                                                     <span class="badge bg-primary">{{$job->status}}</span>
                                                 @elseif ($job->status == 'on_progress')
-                                                    <span class="badge bg-warning">{{$job->status}}</span>
+                                                    <span class="badge bg-warning text-black">{{$job->status}}</span>
                                                 @elseif ($job->status == 'finished')
                                                     <span class="badge bg-success">{{$job->status}}</span>
                                                 @else
@@ -45,7 +47,7 @@
                                                 @if ($job->workers)
                                                     <button class="btn btn-sm btn-primary text-white">Contact Worker</button>
                                                 @endif
-                                                <button class="btn btn-sm btn-primary text-white">Show Detail</button>
+                                                <a href="/jobs/{{$job->id}}"><button class="btn btn-sm btn-primary text-white">Show Detail</button></a>
                                             </td>
                                         </tr>
                                     @endforeach
